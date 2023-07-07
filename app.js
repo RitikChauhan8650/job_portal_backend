@@ -64,6 +64,11 @@ const port = process.env.PORT || 3001;
 
 //add a listen
 app.listen(port, () => {
-  res.setHeader("Access Control Allow Credentials","true");
+  console.log("Setting Access-Control-Allow-Credentials header to true");
   console.log(`server is running on port ${port}`);
+});
+// Set Access-Control-Allow-Credentials header to true
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  next();
 });
